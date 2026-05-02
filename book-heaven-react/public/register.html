@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Register — Book Heaven Pro</title><link rel="stylesheet" href="styles.css"/></head>
+<body>
+  <header class="site-header"><div class="container header-inner"><a class="logo" href="index.html">📚 <span>Book Heaven</span></a></div></header>
+  <main class="container auth-page">
+    <form id="reg-form" class="auth-card">
+      <h2>Create account</h2>
+      <label>Name<input id="name" required/></label>
+      <label>Email<input id="email" type="email" required/></label>
+      <label>Password<input id="password" type="password" required/></label>
+      <div class="form-actions">
+        <button type="submit" class="btn primary">Register</button>
+        <a href="login.html" class="btn ghost">Login</a>
+      </div>
+      <div id="msg" class="msg"></div>
+    </form>
+  </main>
+<script src="auth.js"></script>
+<script>
+document.getElementById('reg-form').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  try{
+    registerUser({name,email,password});
+    window.location = 'index.html';
+  } catch(err){ document.getElementById('msg').textContent = err.message; }
+});
+</script>
+</body></html>
